@@ -23,10 +23,13 @@ div.header {
     background-color: white;
     box-shadow: 0px 4px 4px rgb(215, 215, 215);
     display: grid;
-    grid-template-rows: 2fr 3fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas: "topline"
     "secondline";
-    padding-left: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    gap: 10px;
 }
 
 div.topline {
@@ -34,28 +37,58 @@ div.topline {
     display: grid;
     padding-top: 20px;
     gap: 10px;
-    grid-template-columns: 70px 1fr 70px 100px 150px;
+    grid-template-columns: 30px 2fr 1fr 50px 50px 120px;
+    grid-template-areas: "searchIcon searchBar . notificationIcon profilePicture profileName";
+}
+div.topline img#searchIcon {
+    grid-area:searchIcon;
+}
+
+div.topline input#searchBar {
+    grid-area: searchBar;
+}
+
+div.topline img#notificationIcon {
+    grid-area: notificationIcon;
+}
+
+div.topline img#profilePicture {
+    grid-area: profilePicture;
+}
+
+div.topline h3#profileName {
+    grid-area: profileName;
 }
 
 div.secondline {
     grid-area: secondline;
     display: grid;
     grid-template-rows: 1fr 3fr;
-    grid-template-columns: 50px 1fr repeat(3,75px);
-    grid-template-areas: "profPic intro button1 button2 button3"
-    "profPic userWelcome button1 button2 button3";
+    grid-template-columns: 50px 1fr repeat(3, 75px);
+    grid-template-areas: 
+        "profPic intro button1 button2 button3"
+        "profPic userWelcome button1 button2 button3";
+    column-gap: 20px;
+    align-items: center;
 }
 
-#profPic {
+img.profPic {
     grid-area: profPic;
+    align-self: center; /* Centers it vertically within its area */
+    justify-self: center; /* Centers it horizontally within its area */
 }
 
 #intro {
     grid-area: intro;
+    align-self: self-end;
+    font-size: x-small;
+    font-weight: bold;
 }
 
 #userWelcome {
     grid-area: userWelcome;
+    align-self: self-start;
+    font-size: 28px;
 }
 
 #button1 {
@@ -102,7 +135,66 @@ div.projects {
 }
 
 div.rightbar {
-    grid-area: rightbar'
+    grid-area: rightbar;
+    display: grid;
+    padding-top: 20px;
+    padding-right: 20px;
+    row-gap: 10px;
+    align-content: start;
+}
+
+div.announcementsBox {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px rgb(215, 215, 215);
+    padding: 20px;
+    display:grid;
+    row-gap: 10px;
+}
+
+div.announcement:nth-child(-n+2) {
+    border-bottom:#c5c5c5 solid;
+    padding-bottom: 10px;
+}
+
+div.announcement p {
+    font-size: x-small;
+}
+div.announcement h4 {
+    font-size: smaller;
+}
+
+div.trendingBox {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px rgb(215, 215, 215);
+    padding: 20px;
+    display:grid;
+    row-gap: 10px;
+}
+
+div.trend {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "profPic handle"
+    "profPic project";
+    column-gap: 10px;
+}
+
+div.trend img.profPic {
+    grid-area: profPic;
+    height: 40px;
+}
+
+div.trend h4 {
+    grid-area: handle;
+    font-size: smaller;
+}
+
+div.trend p {
+    grid-area: project;
+    font-size: x-small;
 }
 
 img {
@@ -110,11 +202,11 @@ img {
 }
 
 img.profPic {
-    height: 50px;
+    height: 60px;
 }
 
 img.cardIcons {
-    height:16px;
+    height:20px;
 }
 
 img#dashboardIcon {
@@ -127,12 +219,12 @@ div.projects {
 
 div.projectCards {
     display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit,minmax(225px, 1fr));
     gap:10px;
 }
 
-div.projects h2, div.rightbar h2 {
-    margin-bottom: 20px;
+div.projects h2 {
+    margin-bottom: 10px;
 }
 
 div.card {
@@ -140,10 +232,28 @@ div.card {
     border-radius: 10px;
     box-shadow: 4px 4px 4px rgb(215, 215, 215);
     border-left: #efb32a 6px solid;
-    padding: 10px;
+    padding: 20px;
+    display: grid;
+    column-gap: 20px;
 }
 
-div.card p {
+div.card p, div.announcement p, div.trend p {
     color: #646464;
 }
 
+button.headerbutton {
+    background-color:#1793d4;
+    border-style: none;
+    border-radius:15px;
+    color: white;
+    height: 35px;
+    padding: 5px;
+}
+
+div.icons {
+    padding-top: 10px;
+    justify-self: end;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(3, 1fr);
+}
